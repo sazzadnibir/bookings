@@ -12,4 +12,8 @@ To run this project
 
 ```bash
   go run cmd/web/*.go
+<<<<<<< HEAD
 ```
+=======
+```
+>>>>>>> 050b1b128210711b3e10961600c5a326a3f83c81
