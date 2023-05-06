@@ -68,62 +68,7 @@
 
     {{ block "js" . }}{{ end }} <!-- to write custom js -->
 
-    <script>
-        // Fetch all the forms we want to apply custom Bootstrap validation styles to
-        const forms = document.querySelectorAll('.needs-validation');
-
-        // Loop over them and prevent submission
-        Array.from(forms).forEach(form => {
-            form.addEventListener('submit', event => {
-                if (!form.checkValidity()) {
-                    event.preventDefault();
-                    event.stopPropagation();
-                }
-
-                form.classList.add('was-validated');
-            }, false);
-        });
-
-        // Alert
-        function notify(msg, msgType) {
-            notie.alert({
-                type: msgType,
-                text: msg
-            });
-        }
-
-        function alertError(msg) {
-            notie.alert({
-                type: msgType,
-                text: msg
-            });
-        }
-
-        function alertWarning(msg) {
-            notie.alert({
-                type: msgType,
-                text: msg
-            });
-        }
-
-        function notifyModal(title, text, icon, confirmationButton) {
-            Swal.fire({
-                title: title,
-                html: text,
-                icon: icon,
-                confirmButtonText: confirmationButton
-            });
-        }
-
-        // button for test
-        document.getElementById('colorBtn').addEventListener('click', () => {
-            // notify("This is my Message", "success");
-            // notify("This is my Message", "error");
-            // notify("This is my Message", "warning");
-
-            notifyModal('title', '<em>Hello World</em>', 'success', 'Confirm Button');
-        });
-    </script>
+    <script src="static/js/scripts.js"></script>
 </body>
 
 </html>
