@@ -64,6 +64,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js"></script>
 
     <script src="https://unpkg.com/notie"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     {{ block "js" . }}{{ end }} <!-- to write custom js -->
 
@@ -105,11 +106,22 @@
             });
         }
 
+        function notifyModal(title, text, icon, confirmationButton) {
+            Swal.fire({
+                title: title,
+                html: text,
+                icon: icon,
+                confirmButtonText: confirmationButton
+            });
+        }
+
         // button for test
         document.getElementById('colorBtn').addEventListener('click', () => {
-            notify("This is my Message", "success");
-            notify("This is my Message", "error");
-            notify("This is my Message", "warning");
+            // notify("This is my Message", "success");
+            // notify("This is my Message", "error");
+            // notify("This is my Message", "warning");
+
+            notifyModal('title', '<em>Hello World</em>', 'success', 'Confirm Button');
         });
     </script>
 </body>
