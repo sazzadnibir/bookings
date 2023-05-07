@@ -13,8 +13,38 @@
                 <h1 class="mt-4">General's Quarter</h1>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae reprehenderit temporibus nisi tempore corporis doloribus dolorum numquam necessitatibus dolorem minus nemo laborum cupiditate delectus neque odio pariatur animi aliquam mollitia omnis, eveniet exercitationem fuga? Molestias molestiae repellendus voluptas facilis dolorem nesciunt fuga omnis maiores odit quia rem aspernatur earum veritatis quas officiis cum explicabo dolorum accusamus, quam, ab sequi. Iusto!</p>
 
-                <a href="/make-reservation-gq" class="btn btn-primary">Check Availability</a>
+                <a href="#!" id="check-availability-btn" class="btn btn-primary">Check Availability</a>
             </div>
         </div>
     </div>
+{{ end }}
+
+{{ define "js" }}
+    <script>
+        // button for test
+        document.getElementById('check-availability-btn').addEventListener('click', () => {
+            // attention.custom({ msg: 'Hello World' });
+
+            let html = `
+                <form action="/make-reservation" method="GET" class="py-3 needs-validation" novalidate>
+                    <div class="form-group py-3">
+                        <label for="start_date">Starting Date</label>
+                        <input type="date" class="form-control" id="start_date" aria-describedby="startDateHelp" placeholder="Enter email" required>
+                        <small id="startDateHelp" class="form-text text-muted">Select your starting date</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="end_date">Ending Date</label>
+                        <input type="date" class="form-control" id="end_date" aria-describedby="endDateHelp" placeholder="Enter email" required>
+                        <small id="endDateHelp" class="form-text text-muted">Select your ending date</small>
+                    </div>
+                    
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary mt-3">Search Availability</button>
+                    </div>
+                </form>
+            `;
+
+            attention.custom({ msg: html });
+        });
+    </script>
 {{ end }}

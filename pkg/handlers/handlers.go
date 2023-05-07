@@ -51,8 +51,8 @@ func (m *Repository) MajorSuite(w http.ResponseWriter, r *http.Request) {
 	render.RenderTemplate(w, "majors.page.html", &models.TemplateData{})
 }
 
-func (m *Repository) Book(w http.ResponseWriter, r *http.Request) {
-	render.RenderTemplate(w, "book.page.html", &models.TemplateData{})
+func (m *Repository) Availability(w http.ResponseWriter, r *http.Request) {
+	render.RenderTemplate(w, "search-availability.page.html", &models.TemplateData{})
 }
 
 func (m *Repository) Reservation(w http.ResponseWriter, r *http.Request) {

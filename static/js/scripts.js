@@ -46,32 +46,6 @@ function notifyModal(title, text, icon, confirmationButton) {
     });
 }
 
-// button for test
-document.getElementById('colorBtn').addEventListener('click', () => {
-    // attention.custom({ msg: 'Hello World' });
-
-    let html = `
-        <form action="/make-reservation" method="GET" class="py-3 needs-validation" novalidate>
-            <div class="form-group py-3">
-                <label for="start_date">Starting Date</label>
-                <input type="date" class="form-control" id="start_date" aria-describedby="startDateHelp" placeholder="Enter email" required>
-                <small id="startDateHelp" class="form-text text-muted">Select your starting date</small>
-            </div>
-            <div class="form-group">
-                <label for="end_date">Ending Date</label>
-                <input type="date" class="form-control" id="end_date" aria-describedby="endDateHelp" placeholder="Enter email" required>
-                <small id="endDateHelp" class="form-text text-muted">Select your ending date</small>
-            </div>
-            
-            <div class="d-grid">
-                <button type="submit" class="btn btn-primary mt-3">Search Availability</button>
-            </div>
-        </form>
-    `;
-
-    attention.custom({ msg: html });
-});
-
 function Prompt() {
     let toast = function (c) {
         const {
