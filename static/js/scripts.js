@@ -15,6 +15,13 @@ Array.from(forms).forEach(form => {
     }, false);
 });
 
+// Dates
+const elem = document.getElementById('reservation-dates');
+const rangepicker = new DateRangePicker(elem, {
+    format: "yyyy-mm-dd"
+}); 
+
+
 // Alert
 function notify(msg, msgType) {
     notie.alert({
@@ -108,7 +115,7 @@ function Prompt() {
             title = ''
         } = c;
 
-        const { value: formValues } = await Swal.fire({
+        const { value: result } = await Swal.fire({
             title: title,
             html: msg,
             backdrop: false,
@@ -116,20 +123,35 @@ function Prompt() {
             showCancelButton: true,
             willOpen: () => {
                 const elem = document.getElementById('reservation-dates-modal');
-                // const rp = new DateRangePicker(elem, {
-                //     format: 'yyyy-mm-dd'
-                // });
+                const rp = new DateRangePicker(elem, {
+                    format: 'yyyy-mm-dd',
+                    showOnFocus: true
+                });
             },
             preConfirm: () => {
                 return [
-                        document.getElementById('start').value,
-                        document.getElementById('end').value
-                    ]
-                }
-            });
+                    document.getElementById('start').value,
+                    document.getElementById('end').value
+                ]
+            },
+            didOpen: () => {
+                document.getElementById('start').removeAttribute('disabled');
+                document.getElementById('end').removeAttribute('disabled');
+            }
+        });
 
-        if (formValues) {
-            Swal.fire(JSON.stringify(formValues))
+        if (result) {
+            if (result.dismiss !== Swal.DismissReason.cancel) {
+                if (result.value !== '') {
+                    if (c.callback !== undefined) {
+                        c.callback(result);
+                    }
+                } else {
+                    c.callback(false);
+                }
+            } else {
+                c.callback(false);
+            }
         }
     }
 
