@@ -6,9 +6,9 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/sazzadnibir/bookings/pkg/config"
-	"github.com/sazzadnibir/bookings/pkg/models"
-	"github.com/sazzadnibir/bookings/pkg/render"
+	"github.com/sazzadnibir/bookings/internal/config"
+	"github.com/sazzadnibir/bookings/internal/models"
+	"github.com/sazzadnibir/bookings/internal/render"
 )
 
 var Repo *Repository
