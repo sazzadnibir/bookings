@@ -8,22 +8,25 @@
 
                 <div class="row">
                     <div class="col-md-6 offset-md-3">
-                        <form action="/make-reservation" method="GET" class="py-3">
+                        <form action="/make-reservation" method="POST" class="py-3">
+
+                            <input type="hidden" name="csrf_token" value="{{ .CSRFToken }}">
+
                             <div class="form-group mt-3">
                                 <label for="first_name">First Name</label>
-                                <input type="text" class="form-control" id="first_name" placeholder="Enter first name" required autocomplete="false">
+                                <input type="text" class="form-control" id="first_name" placeholder="Enter first name" autocomplete="false">
                             </div>
                             <div class="form-group mt-3">
                                 <label for="last_name">Last Name</label>
-                                <input type="text" class="form-control" id="last_name" placeholder="Enter last name" required autocomplete="false">
+                                <input type="text" class="form-control" id="last_name" placeholder="Enter last name" autocomplete="false">
                             </div>
                             <div class="form-group mt-3">
                                 <label for="email">Email Address</label>
-                                <input type="email" class="form-control" id="email" placeholder="Enter email" required autocomplete="false">
+                                <input type="email" class="form-control" id="email" placeholder="Enter email" autocomplete="false">
                             </div>
                             <div class="form-group mt-3">
                                 <label for="phone">Phone</label>
-                                <input type="text" class="form-control" id="phone" placeholder="Enter phone number" required autocomplete="false">
+                                <input type="text" class="form-control" id="phone" placeholder="Enter phone number" autocomplete="false">
                             </div>
                             
                             <div class="d-grid">

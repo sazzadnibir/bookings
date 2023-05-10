@@ -7,6 +7,7 @@ import (
 	"net/http"
 
 	"github.com/sazzadnibir/bookings/internal/config"
+	"github.com/sazzadnibir/bookings/internal/forms"
 	"github.com/sazzadnibir/bookings/internal/models"
 	"github.com/sazzadnibir/bookings/internal/render"
 )
@@ -86,7 +87,14 @@ func (m *Repository) AvailabilityJSON(w http.ResponseWriter, r *http.Request) {
 }
 
 func (m *Repository) Reservation(w http.ResponseWriter, r *http.Request) {
-	render.RenderTemplate(w, r, "reservation.page.html", &models.TemplateData{})
+	render.RenderTemplate(w, r, "reservation.page.html", &models.TemplateData{
+		Form: forms.New(nil),
+	})
+}
+
+// Handles the posting of a reservation form
+func (m *Repository) PostReservation(w http.ResponseWriter, r *http.Request) {
+
 }
 
 func (m *Repository) Contact(w http.ResponseWriter, r *http.Request) {
