@@ -13,9 +13,13 @@
                             <input type="hidden" name="csrf_token" value="{{ .CSRFToken }}">
 
                             <div class="form-group mt-3">
-                                <label for="first_name">First Name</label>
-                                <input type="text" class="form-control" id="first_name" placeholder="Enter first name" autocomplete="false">
+                                <label for="first_name">First Name: </label>
+                                {{ with .Form.Errors.Get "first_name" }}
+                                    <label class="text-danger">{{ . }}</label>
+                                {{ end }}
+                                <input type="text" class="form-control {{ with .Form.Errors.Get "first_name" }} is-invalid {{ end }}" id="first_name" placeholder="Enter first name" autocomplete="false">
                             </div>
+
                             <div class="form-group mt-3">
                                 <label for="last_name">Last Name</label>
                                 <input type="text" class="form-control" id="last_name" placeholder="Enter last name" autocomplete="false">
