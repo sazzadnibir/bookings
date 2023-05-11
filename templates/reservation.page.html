@@ -8,6 +8,8 @@
 
                 <div class="row">
                     <div class="col-md-6 offset-md-3">
+
+                        {{ $res := index .Data "reservation" }}
                         <form action="/make-reservation" method="POST" class="py-3">
 
                             <input type="hidden" name="csrf_token" value="{{ .CSRFToken }}">
@@ -17,20 +19,29 @@
                                 {{ with .Form.Errors.Get "first_name" }}
                                     <label class="text-danger">{{ . }}</label>
                                 {{ end }}
-                                <input type="text" class="form-control {{ with .Form.Errors.Get "first_name" }} is-invalid {{ end }}" id="first_name" placeholder="Enter first name" autocomplete="false">
+                                <input type="text" class="form-control {{ with .Form.Errors.Get "first_name" }} is-invalid {{ end }}" id="first_name" name="first_name" value="{{ $res.FirstName }}" placeholder="Enter first name" autocomplete="false">
                             </div>
 
                             <div class="form-group mt-3">
                                 <label for="last_name">Last Name</label>
-                                <input type="text" class="form-control" id="last_name" placeholder="Enter last name" autocomplete="false">
+                                {{ with .Form.Errors.Get "last_name" }}
+                                    <label class="text-danger">{{ . }}</label>
+                                {{ end }}
+                                <input type="text" class="form-control {{ with .Form.Errors.Get "last_name" }} is-invalid {{ end }}" id="last_name" name="last_name" value="{{ $res.LastName }}"placeholder="Enter last name" autocomplete="false">
                             </div>
                             <div class="form-group mt-3">
                                 <label for="email">Email Address</label>
-                                <input type="email" class="form-control" id="email" placeholder="Enter email" autocomplete="false">
+                                {{ with .Form.Errors.Get "email" }}
+                                    <label class="text-danger">{{ . }}</label>
+                                {{ end }}
+                                <input type="email" class="form-control {{ with .Form.Errors.Get "email" }} is-invalid {{ end }}" id="email" name="email" value="{{ $res.Email }}"placeholder="Enter email" autocomplete="false">
                             </div>
                             <div class="form-group mt-3">
                                 <label for="phone">Phone</label>
-                                <input type="text" class="form-control" id="phone" placeholder="Enter phone number" autocomplete="false">
+                                {{ with .Form.Errors.Get "phone" }}
+                                    <label class="text-danger">{{ . }}</label>
+                                {{ end }}
+                                <input type="text" class="form-control {{ with .Form.Errors.Get "phone" }} is-invalid {{ end }}" id="phone" name="phone" value="{{ $res.Phone }}"placeholder="Enter phone number" autocomplete="false">
                             </div>
                             
                             <div class="d-grid">
