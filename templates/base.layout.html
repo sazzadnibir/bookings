@@ -72,6 +72,20 @@
     {{ block "js" . }}{{ end }} <!-- to write custom js -->
 
     <script src="/static/js/scripts.js"></script>
+
+    <script>
+        {{ with .Error }}
+            notify("{{ . }}", "error");
+        {{ end }}
+
+        {{ with .Flash }}
+            notify("{{ . }}", "success");
+        {{ end }}
+
+        {{ with .Warning }}
+            notify("{{ . }}", "warning");
+        {{ end }}
+    </script>
 </body>
 
 </html>
