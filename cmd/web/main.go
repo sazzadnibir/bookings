@@ -20,6 +20,11 @@ var app config.AppConfig
 var session *scs.SessionManager
 
 func main() {
+	err := run()
+	if err != nil {
+		log.Fatal(err)
+	}
+
 	// Session Data
 	gob.Register(models.Reservation{})
 
@@ -57,4 +62,8 @@ func main() {
 
 	err = serve.ListenAndServe()
 	log.Fatal(err)
+}
+
+func run() error {
+	return nil
 }
